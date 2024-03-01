@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <title>Instagram - Clone Coding</title>
+    <style>
+       @import url('css/default.css');
+       @import url('css/gnb.css');
+       .main {
+        background-color: #fafafa;
+        padding-top: 25px;
+
+        align-items: flex-start;
+       }
+       .feed {
+        background-color: white;
+        width: 470px;
+        margin-right: 30px;
+
+        border-radius: 8px;
+        border: 0.5px solid lightgray;
+        font-size: 13px;
+
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+       }
+       .account {
+        width: 320px;
+        margin-top: 10px;
+        font-size: 14px;
+       }
+       .account-content {
+        width: 100%;
+       }
+       .account-content > li {
+        justify-content: space-between;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+       }
+       .account-content > li > p {
+        margin-left: 20px;
+        margin-right: auto;
+
+        align-items: flex-start;
+       }
+       .account-content > li > a {
+        color: skyblue;
+        font-size: 13px;
+       }
+       .account-content > li > p > span:first-child {
+        font-weight: bold;
+        color: black;
+       }
+       .account-content > li > p > span:last-child {
+        color: gray;
+       }
+       .img-wrap {
+        border-radius: 50%;
+        overflow: hidden;
+        border: 0.5px solid #f2f2f2;
+        display: flex;
+       }
+       li.suggestion > span {
+        color: gray;
+       }
+       li.suggestion > a {
+        color: black;
+       }
+       .about {
+        margin-top: 30px;
+        margin-bottom: 30px;
+       }
+       .about > a {
+        color: lightgray;
+        font-size: 11px;
+        margin-right: 2px;
+       }
+       .name {
+        color: lightgray;
+        font-size: 11px;
+
+        margin-right: auto;
+       }
+       .profile {
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+       }
+       .profile > p {
+        margin-left: 18px;
+        margin-right: auto;
+       }
+       .profile > p > span:first-child {
+        font-weight: bold;
+        margin-bottom: 5px;
+        margin-right: auto;
+       }
+       .imgs > div > img {
+        width: 100%;
+       }
+       .feed-icons {
+        width: 92%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+       }
+       .feed-icons > img {
+        margin-right: 10px;
+        cursor: pointer;
+       }
+       .feed-icons > img:last-child {
+        margin-left: auto;
+       }
+       .likes {
+        margin-right: auto;
+        margin-left: 20px;
+        font-weight: bold;
+        margin-top: 5px;
+        margin-bottom: 5px;
+       }
+       .comments {
+        width: 92%;
+        margin-top: 5px;
+       }
+       .comments > span.title {
+        font-weight: bold;
+       }
+       .comments > span.hashtag {
+        color: darkblue;
+       }
+       .count {
+        margin-left: 20px;
+        margin-right: auto;
+        color: lightgray;
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+       }
+       .time {
+        margin-left: 20px;
+        margin-right: auto;
+        font-size: 10px;
+        color: lightgray;
+       }
+       .swiper {
+        width: 470px;
+       }
+       .swiper-button-prev, .swiper-button-next {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.5);
+       }
+       .swiper-button-prev:after, .swiper-button-next:after {
+        font-size: 12px;
+        color: white;
+        font-weight: bold;
+       }
+       .swiper-pagination-bullet {
+        background-color: white;
+       }
+    </style>
+    <script>
+        let is_liked = true;
+        function like(){
+            if(is_liked == true) {
+                $('#heart').attr('src', 'image/icons/12.png')
+                is_liked = false;
+            } else {
+                $('#heart').attr('src', 'image/icons/5.png')
+                is_liked = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="gnb flex-row">
+        <div class="gnb-content flex-row">
+            <div class="logo flex-row">
+                <img width="102" src="image/logo_instagram.png">
+                <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="icons flex-row">
+                <img src="image/icons/1.png">
+                <img src="image/icons/2.png">
+                <img src="image/icons/3.png">
+                <img src="image/icons/4.png">
+                <img src="image/icons/5.png">
+                <img width="32" src="image/icons/6.png">
+            </div>
+        </div>
+    </div>
+    <div class="main flex-row">
+        <div class="feed flex-col">
+            <div class="profile flex-row">
+                <div class="img-wrap">
+                    <img width="32" src="https://i.pinimg.com/736x/07/d4/e3/07d4e35592213fe95bb5b843021e1806.jpg">
+                </div>
+                <p class="flex-col">
+                    <span>yyicaa</span>
+                    <span>Brisbane, Queensland, Australia</span>
+                </p>
+                <img width="20" src="image/icons/7.png">
+            </div>
+            <div class="imgs swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img width="475" src="https://awsimages.detik.net.id/community/media/visual/2023/09/22/kim-sunwoo-the-boyz-3.jpeg?w=800"></div>
+                    <div class="swiper-slide"><img width="475" src="https://cdn.idntimes.com/content-images/community/2021/05/180019544-954730491931797-622441874186104736-n-26b07c2e633db337975353b1b936ff2c-b2760ac37dbcb160ca01c9eefb775ca1.jpg"></div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            
+            </div>
+            <div class="feed-icons flex-row">
+                <img id="heart" onclick="like()" src="image/icons/5.png">
+                <img src="image/icons/9.png">
+                <img src="image/icons/2.png">
+                <img src="image/icons/10.png">
+            </div>
+            <div class="likes">
+                100.000.000 likes
+            </div>
+            <div class="comments">
+                <span class="title">yyicaa</span> 
+                <span>"Yesterday is but today's memory, and tomorrow is today's dream. "</span>
+                <span class="hashtag">#Sparta_Coding_Club</span>
+            </div>
+            <div class="count">
+                View all 169 comments
+            </div>
+            <div class="time">
+                20 HOURS AGO
+            </div>
+        </div>
+        <div class="account flex-col">
+            <div class="account-content">
+                <li class="flex-row">
+                    <div class="img-wrap">
+                    <img width="56" src="https://i.pinimg.com/736x/56/b6/35/56b63597d9b45086d8963ed3fe3959e8.jpg">
+                </div>
+                    <p class="flex-col">
+                        <span>ini_icaaaa</span>
+                        <span>batagor is good</span>
+                    </p>
+                    <a href="#">Switch</a>
+                </li>
+                <li class="flex-row suggestion">
+                    <span>Suggestion for you</span>
+                    <a href="#">See All</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                    <img width="32" src="https://www.wowkeren.com/images/photo/wonwoo.jpg">
+                </div>
+                    <p class="flex-col">
+                        <span>wonwoo is wonwoo</span>
+                        <span>Popular</span>
+                    </p>
+                    <a href="#">Follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                    <img width="32" src="https://i.pinimg.com/originals/45/07/b0/4507b026b7d7e90b32844bcdb4f0d4c9.jpg">
+                </div>
+                    <p class="flex-col">
+                        <span>haechan_kiyowooCuy</span>
+                        <span>Popular</span>
+                    </p>
+                    <a href="#">Follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                    <img width="32" src="https://down-id.img.susercontent.com/file/0dd6bde1c56069a2607228d38655805e">
+                </div>
+                    <p class="flex-col">
+                        <span>ini_mingyu</span>
+                        <span>Popular</span>
+                    </p>
+                    <a href="#">Follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                    <img width="32" src="https://kpopsingers.com/wp-content/uploads/2023/10/Sunwoo-1-600x600.webp">
+                </div>
+                    <p class="flex-col">
+                        <span>butterflysunwoo</span>
+                        <span>Popular</span>
+                    </p>
+                    <a href="#">Follow</a>
+                </li>
+                <li class="flex-row friends">
+                    <div class="img-wrap">
+                    <img width="32" src="https://cdn.idntimes.com/content-images/community/2020/07/12-717b96b8dc09651267dfa75eda8677db.jpeg">
+                </div>
+                    <p class="flex-col">
+                        <span>yedam_keren</span>
+                        <span>Popular</span>
+                    </p>
+                    <a href="#">Follow</a>
+                </li>
+            </div>
+            <div class="about">
+                <a href="#">About</a>
+                <a href="#">Help</a>
+                <a href="#">Press</a>
+                <a href="#">API</a>
+                <a href="#">Jobs</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Location</a>
+                <a href="#">Language</a>
+                <a href="#">English</a>
+            </div>
+            <div class="name">
+                © 2022 INSTAGRAM FROM META
+            </div>
+        </div>
+    </div>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>
